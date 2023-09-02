@@ -3,14 +3,21 @@ def binatointeger(binary):
 
 lst=['0001','0011','0101','1011','1101','1111']
 new_lst=list(map(binatointeger,lst))
-while len(new_lst)>2 :
-    min1=min(new_lst)
-    new_lst.remove(min1)
-    min2=min(new_lst)
-    new_lst.remove(min2)
-    total=min1+min2
-    new_lst.append(total)
-    new_lst.sort
+new_lst.sort()
+s = sum(new_lst) / 2
+sum1, sum2, flag, ans = new_lst.pop(), 0, 0, []
+for i in range(len(new_lst)-1):
+     if (sum1 + new_lst[0]) <= s:
+            sum1 += new_lst.pop(0)
+     elif flag != 1:
+      ans.append(sum1)
+      flag = 1
 
-print(new_lst)
+     if flag == 1:
+        sum2 = sum(new_lst)
+        ans.append(sum2)
+       
+print(abs(ans[0] - ans[1]))
+
+
 
